@@ -1,0 +1,62 @@
+# Decap CMS settings for the project (before and after) gallery.
+# Justin signs in at /admin/ with a GitHub account that has write access to this repository.
+# No secrets live here: the GitHub OAuth connection is set up in the Netlify site settings.
+
+backend:
+  name: github
+  repo: jdub-remodeling/jdub-remodeling-llc
+  branch: main
+  # Netlify's hosted OAuth provider (Site configuration > Access & security > OAuth).
+  base_url: https://api.netlify.com
+  auth_endpoint: auth
+
+site_url: https://jdubwebsite.netlify.app
+display_url: https://jdubwebsite.netlify.app
+logo_url: /assets/img/icon-512.png
+locale: en
+
+# Uploaded photos are saved inside src/project-photos so the site build can resize them.
+# public_folder is the path stored in each project file, relative to src/project-photos.
+media_folder: src/project-photos/uploads
+public_folder: uploads
+
+collections:
+  - name: projects
+    label: Projects (before & after)
+    label_singular: Project
+    folder: src/content/projects
+    extension: json
+    format: json
+    create: true
+    slug: "{{slug}}"
+    identifier_field: title
+    summary: "{{title}} ({{category}})"
+    description: >-
+      Add finished jobs here. A project appears on the website only when it has a title, a category,
+      and both a Before and an After photo with a short description of each photo.
+    fields:
+      - { name: title, label: Project title, widget: string, hint: "For example: Hall bathroom remodel" }
+      - name: category
+        label: Type of project
+        widget: select
+        options:
+          - { label: Kitchens, value: kitchens }
+          - { label: Bathrooms, value: bathrooms }
+          - { label: Other remodeling, value: other }
+      - { name: description, label: Short description, widget: text, required: false, hint: "One or two sentences about what was done." }
+      - { name: location, label: City or neighborhood, widget: string, required: false, hint: "Optional. Leave blank if the customer prefers privacy." }
+      - { name: featured, label: Show on the home page, widget: boolean, default: false, required: false }
+      - { name: published, label: Published, widget: boolean, default: true, required: false, hint: "Turn off to hide this project without deleting it." }
+      - { name: date, label: Date finished, widget: datetime, required: false, hint: "Newest projects are listed first." }
+      - name: before
+        label: Before photo
+        widget: object
+        fields:
+          - { name: src, label: Photo, widget: image }
+          - { name: alt, label: Describe the photo, widget: string, hint: "For example: Old kitchen with dark cabinets and worn countertops." }
+      - name: after
+        label: After photo
+        widget: object
+        fields:
+          - { name: src, label: Photo, widget: image }
+          - { name: alt, label: Describe the photo, widget: string, hint: "For example: Finished kitchen with white cabinets and a tile backsplash." }

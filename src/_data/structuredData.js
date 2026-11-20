@@ -9,7 +9,7 @@ export default function () {
     url: `${site.url}/`,
     telephone: site.contact.phoneE164,
     email: site.contact.email,
-    logo: `${site.url}/assets/img/logo-720.jpg`,
+    logo: `${site.url}/assets/img/icon-512.png`,
     image: `${site.url}/assets/img/og-image.jpg`,
     description: "Kitchen, bathroom, and general home remodeling.",
     founder: { "@type": "Person", name: site.contact.person },

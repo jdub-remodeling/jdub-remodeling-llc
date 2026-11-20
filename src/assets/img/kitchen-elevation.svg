@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 420" width="560" height="420" fill="none" stroke-linejoin="miter">
+  <g stroke="#8d9197" stroke-width="2">
+    <!-- floor -->
+    <path d="M16 360h528"/>
+    <!-- upper cabinets, left -->
+    <rect x="40" y="56" width="176" height="112"/>
+    <path d="M128 56v112M40 150h176"/>
+    <path d="M114 100v28M142 100v28" stroke-width="3"/>
+    <!-- upper cabinets, right -->
+    <rect x="364" y="56" width="156" height="112"/>
+    <path d="M442 56v112M364 150h156"/>
+    <path d="M428 100v28M456 100v28" stroke-width="3"/>
+    <!-- hood -->
+    <path d="M226 160h128l-26-62h-76z"/>
+    <rect x="272" y="24" width="36" height="74"/>
+    <!-- base cabinets -->
+    <rect x="40" y="252" width="176" height="94"/>
+    <path d="M128 252v94"/>
+    <path d="M114 270h0M114 270v26M142 270v26" stroke-width="3"/>
+    <rect x="364" y="252" width="156" height="94"/>
+    <path d="M442 252v94"/>
+    <path d="M428 270v26M456 270v26" stroke-width="3"/>
+    <path d="M40 346h176M364 346h156" stroke-width="1.5"/>
+    <!-- range -->
+    <rect x="228" y="252" width="124" height="108"/>
+    <rect x="244" y="286" width="92" height="56"/>
+    <path d="M250 270h80" stroke-width="3"/>
+    <circle cx="258" cy="244" r="0"/>
+  </g>
+  <!-- countertop and backsplash line -->
+  <g stroke="#e0832b" stroke-width="3">
+    <path d="M28 252h188M364 252h168"/>
+    <path d="M216 252h12M352 252h12" stroke-width="2"/>
+    <path d="M28 240v12M532 240v12"/>
+  </g>
+  <!-- dimension lines -->
+  <g stroke="#e0832b" stroke-width="1.5">
+    <path d="M40 392h480M40 384v16M520 384v16"/>
+    <path d="M14 56v304M6 56h16M6 360h16"/>
+  </g>
+</svg>

@@ -5,10 +5,12 @@ eleventyExcludeFromCollections: true
 {%- if site.allowIndexing %}
 User-agent: *
 Allow: /
+Disallow: /admin/
 Disallow: /quote-received/
 
 Sitemap: {{ site.url }}/sitemap.xml
 {%- else %}
 User-agent: *
 Disallow: /
+Disallow: /admin/
 {%- endif %}

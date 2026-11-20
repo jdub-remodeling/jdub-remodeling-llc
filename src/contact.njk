@@ -50,7 +50,8 @@ description: Request a free remodeling quote from J-Dub Remodeling LLC. Call or 
       </div>
 
       <form class="quote-form" name="quote" method="POST" action="/quote-received/"
-            data-netlify="true" netlify-honeypot="bot-field" data-quote-form novalidate>
+            data-netlify="true" netlify-honeypot="bot-field" data-quote-form novalidate
+            data-phone="{{ site.contact.phoneE164 }}" data-phone-display="{{ site.contact.phoneDisplay }}" data-email="{{ site.contact.email }}">
         <input type="hidden" name="form-name" value="quote">
         <p class="hp-field" aria-hidden="true">
           <label>Leave this field empty <input name="bot-field" tabindex="-1" autocomplete="off"></label>

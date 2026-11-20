@@ -234,6 +234,42 @@
       status.textContent = message;
     }
 
+    // When the form cannot be sent, give the visitor three working ways to reach Justin right now.
+    // The email link carries what they typed, so nothing they wrote is lost.
+    function showFallback() {
+      const phone = form.dataset.phone;
+      const email = form.dataset.email;
+      const lines = [
+        `Name: ${fields.name.value.trim()}`,
+        `Email: ${fields.email.value.trim()}`,
+        `Phone: ${fields.phone.value.trim()}`,
+        `Project type: ${form.elements["project-type"].value}`,
+        `City or ZIP: ${form.elements.location.value.trim()}`,
+        "",
+        fields.description.value.trim(),
+      ];
+      const mailto = `mailto:${email}?subject=${encodeURIComponent("Quote request")}&body=${encodeURIComponent(lines.join("\n"))}`;
+
+      status.className = "form-status is-error";
+      status.textContent = "";
+      const message = document.createElement("p");
+      message.textContent = "Your request didn’t go through, and nothing was sent. You can reach Justin right now:";
+      const actions = document.createElement("div");
+      actions.className = "status-actions";
+      [
+        [`Call ${form.dataset.phoneDisplay}`, `tel:${phone}`],
+        ["Text Justin", `sms:${phone}`],
+        ["Email this request", mailto],
+      ].forEach(([label, href]) => {
+        const link = document.createElement("a");
+        link.className = "btn btn-secondary";
+        link.href = href;
+        link.textContent = label;
+        actions.appendChild(link);
+      });
+      status.append(message, actions);
+    }
+
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
       status.className = "form-status";
@@ -267,10 +303,7 @@
         status.focus();
         track("generate_lead", { form_name: "quote" });
       } catch {
-        setStatus(
-          "error",
-          "Sorry, your request could not be sent. Please try again, or call or text Justin at 850-614-0729.",
-        );
+        showFallback();
         status.focus();
       } finally {
         submit.disabled = false;

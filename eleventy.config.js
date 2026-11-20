@@ -23,6 +23,16 @@ export default function (eleventyConfig) {
   });
   eleventyConfig.addPassthroughCopy({ "src/assets/img/favicon-32.png": "favicon.png" });
 
+  // Project editor (Decap CMS) at /admin/. The editor script is copied from node_modules so it is
+  // served from this site and does not depend on an outside CDN.
+  eleventyConfig.addPassthroughCopy({ "src/admin": "admin" });
+  eleventyConfig.addPassthroughCopy({
+    "node_modules/decap-cms/dist/decap-cms.js": "admin/vendor/decap-cms.js",
+    "node_modules/decap-cms/dist/*.decap-cms.js": "admin/vendor",
+    "node_modules/decap-cms/dist/*.wasm": "admin/vendor",
+  });
+  eleventyConfig.addWatchTarget("src/content/");
+
   eleventyConfig.addGlobalData("gallery", () => loadGallery());
 
   // Responsive <picture> with fixed width/height so the layout does not shift while loading.

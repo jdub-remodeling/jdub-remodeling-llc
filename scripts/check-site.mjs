@@ -15,6 +15,8 @@ const htmlFiles = [];
 function walk(dir) {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
     const full = path.join(dir, entry.name);
+    // The /admin/ editor is a separate app; it is checked on its own below.
+    if (entry.isDirectory() && full === path.join(OUT, "admin")) continue;
     if (entry.isDirectory()) walk(full);
     else if (entry.name.endsWith(".html")) htmlFiles.push(full);
   }
@@ -68,6 +70,26 @@ if (!/netlify-honeypot="bot-field"/.test(contact)) problems.push("contact: honey
 for (const required of ["index.html", "services/index.html", "about/index.html", "contact/index.html", "privacy/index.html", "404.html", "sitemap.xml", "robots.txt"]) {
   if (!fs.existsSync(path.join(OUT, required))) problems.push(`missing output: ${required}`);
 }
+
+// Project editor: present, hidden from search engines, and free of secrets.
+const adminDir = path.join(OUT, "admin");
+for (const required of ["index.html", "config.yml", path.join("vendor", "decap-cms.js")]) {
+  if (!fs.existsSync(path.join(adminDir, required))) problems.push(`missing output: admin/${required}`);
+}
+if (fs.existsSync(path.join(adminDir, "index.html"))) {
+  const adminHtml = fs.readFileSync(path.join(adminDir, "index.html"), "utf8");
+  if (!/<meta name="robots" content="noindex, nofollow">/.test(adminHtml)) problems.push("admin: missing noindex meta tag");
+}
+if (fs.existsSync(path.join(adminDir, "config.yml"))) {
+  const adminConfig = fs.readFileSync(path.join(adminDir, "config.yml"), "utf8");
+  if (/(client_secret|secret|token|api[_-]?key)\s*[:=]\s*\S/i.test(adminConfig)) problems.push("admin/config.yml: looks like it contains a secret");
+  if (!/^\s*name: github\s*$/m.test(adminConfig)) problems.push("admin/config.yml: GitHub backend not configured");
+}
+if (!/Disallow: \/admin\//.test(fs.readFileSync(path.join(OUT, "robots.txt"), "utf8"))) problems.push("robots.txt: /admin/ is not disallowed");
+if (/\/admin\//.test(fs.readFileSync(path.join(OUT, "sitemap.xml"), "utf8"))) problems.push("sitemap.xml: lists /admin/");
+
+// Logo must be the vector file, and no page may still point at the old photo-based logo files.
+if (!fs.existsSync(path.join(OUT, "assets", "img", "logo.svg"))) problems.push("missing output: assets/img/logo.svg");
 
 if (problems.length) {
   console.error(`\n${problems.length} problem(s) found:`);
