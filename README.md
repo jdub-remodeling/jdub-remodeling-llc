@@ -107,7 +107,7 @@ Use one of:
 - **DNS (recommended once the domain is connected):** add a Domain property and the TXT record Google provides at the DNS provider.
 - **HTML tag:** copy only the `content` value into `integrations.googleSiteVerification` (or the `GOOGLE_SITE_VERIFICATION` environment variable) and redeploy.
 
-Then submit `https://jdubremodelingllc.com/sitemap.xml`.
+Then submit `https://jdubremodeling.com/sitemap.xml`.
 
 Search engines are blocked (`robots.txt` and `noindex`) on everything except Netlify's production deploy, so previews and local builds are never indexed.
 
@@ -125,20 +125,20 @@ Invoices, payments, and payment records stay in Square. This site never collects
 
 ## Domain
 
-Intended domain: `jdubremodelingllc.com` (ownership still to be confirmed).
+Domain: `jdubremodeling.com` (purchased). The live site is the Netlify project `jdubwebsite` on the personal team, not the Kota team.
 
-1. Netlify: **Domain management > Add a domain**, enter `jdubremodelingllc.com`, and set it as primary.
+1. Netlify: **Domain management > Add a domain**, enter `jdubremodeling.com`, and set it as primary. Also add `www.jdubremodeling.com`.
 2. Point DNS as Netlify instructs. The simplest is to keep DNS at the current registrar and add the records Netlify lists (an `A`/`ALIAS` record for the root and a `CNAME` for `www`). Moving DNS to Netlify is also possible.
 3. **Keep any existing email records** (`MX`, `TXT`/SPF, DKIM, DMARC). Changing website records must not remove them.
 4. Netlify issues the HTTPS certificate automatically.
 
 Canonical links, the sitemap, and social sharing tags use Netlify's primary domain automatically, so nothing in the code changes when the domain is connected. To force a specific address, set the `SITE_URL` environment variable.
 
-Netlify does not provide email inboxes. A business mailbox (for example `justin@jdubremodelingllc.com`) would come from a provider such as Google Workspace or Microsoft 365, set up separately using that provider's DNS records.
+Netlify does not provide email inboxes. A business mailbox (for example `justin@jdubremodeling.com`) would come from a provider such as Google Workspace or Microsoft 365, set up separately using that provider's DNS records. The public contact address stays `JdubRemodelingLLC@Yahoo.com` until that is changed.
 
 ## Logo
 
-The site uses a crop of the logo from a photo of the business card (`brand-source/logo.jpg`). It reads well on screen, but it is a photo, not original artwork. If Justin has the original logo file (vector `.ai`, `.eps`, `.svg`, `.pdf`, or a high-resolution `.png`), replace `brand-source/logo.jpg` with it and run `npm run brand`.
+The header, favicon, and share image are built from Justin's logo file, `brand-source/logo.png`. To replace it, put the new file at that path and run `npm run brand`.
 
 ## Hosting and costs
 
@@ -146,8 +146,8 @@ The site is designed to fit within Netlify's free plan for a small business site
 
 ## Handoff checklist
 
-- [ ] **Domain**: confirm Justin owns `jdubremodelingllc.com`, connect it in Netlify, keep existing email DNS records, confirm HTTPS.
-- [ ] **Project photos and logo**: collect real before-and-after photos with homeowner permission; add them as described above. Ask for the original logo file.
+- [ ] **Domain**: connect `jdubremodeling.com` on the `jdubwebsite` Netlify site, keep existing email DNS records, confirm HTTPS.
+- [ ] **Project photos**: collect real before-and-after photos with homeowner permission; add them as described above.
 - [ ] **Business details**: confirm service area, any bio details, and a portrait if Justin wants one; update `src/_data/site.js`.
 - [ ] **Quote-form notifications**: enable form detection, add the email notification, send and confirm a test request.
 - [ ] **Google Analytics and Search Console**: create both under Justin's Google account; add the Measurement ID; verify the domain; submit the sitemap; mark `generate_lead` as a key event.

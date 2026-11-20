@@ -88,8 +88,8 @@ if (fs.existsSync(path.join(adminDir, "config.yml"))) {
 if (!/Disallow: \/admin\//.test(fs.readFileSync(path.join(OUT, "robots.txt"), "utf8"))) problems.push("robots.txt: /admin/ is not disallowed");
 if (/\/admin\//.test(fs.readFileSync(path.join(OUT, "sitemap.xml"), "utf8"))) problems.push("sitemap.xml: lists /admin/");
 
-// Logo must be the vector file, and no page may still point at the old photo-based logo files.
-if (!fs.existsSync(path.join(OUT, "assets", "img", "logo.svg"))) problems.push("missing output: assets/img/logo.svg");
+if (!fs.existsSync(path.join(OUT, "assets", "img", "logo.png"))) problems.push("missing output: assets/img/logo.png");
+if (fs.readFileSync(path.join(OUT, "index.html"), "utf8").includes("/assets/img/logo.svg")) problems.push("homepage still uses the stand-in logo.svg");
 
 if (problems.length) {
   console.error(`\n${problems.length} problem(s) found:`);

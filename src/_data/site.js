@@ -13,7 +13,7 @@ const config = {
 
   // Site address. Netlify sets URL automatically to the primary domain once it is connected.
   // SITE_URL can be set in Netlify environment variables to override it.
-  intendedDomain: "https://jdubremodelingllc.com",
+  intendedDomain: "https://jdubremodeling.com",
 
   contact: {
     person: "Justin Robson",
