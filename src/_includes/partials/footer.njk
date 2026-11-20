@@ -1,0 +1,46 @@
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <p class="footer-name">{{ site.name }}</p>
+      <p class="footer-tagline">{{ site.tagline }}<br>{{ site.taglineServices }}</p>
+      {%- if site.serviceArea.length %}
+      <p class="footer-area">Serving {{ site.serviceArea | join(", ") }}</p>
+      {%- endif %}
+    </div>
+
+    <div>
+      <p class="footer-heading">Contact {{ site.contact.person }}</p>
+      <ul class="footer-list">
+        <li><a href="tel:{{ site.contact.phoneE164 }}" data-track="phone">Call {{ site.contact.phoneDisplay }}</a></li>
+        <li><a href="sms:{{ site.contact.phoneE164 }}" data-track="text">Text {{ site.contact.phoneDisplay }}</a></li>
+        <li><a href="mailto:{{ site.contact.email }}" data-track="email">{{ site.contact.email }}</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="footer-heading">Explore</p>
+      <ul class="footer-list">
+        {%- for item in nav %}
+        <li><a href="{{ item.url }}">{{ item.label }}</a></li>
+        {%- endfor %}
+        {%- if site.links.googleBusinessProfile %}
+        <li><a href="{{ site.links.googleBusinessProfile }}" rel="noopener" target="_blank">Google Business Profile</a></li>
+        {%- endif %}
+        {%- if site.links.facebook %}
+        <li><a href="{{ site.links.facebook }}" rel="noopener" target="_blank">Facebook</a></li>
+        {%- endif %}
+      </ul>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <p>&copy; {{ site.year }} {{ site.name }}</p>
+    <p>
+      <a href="/privacy/">Privacy</a>
+      {%- if site.analyticsId %}
+      <span aria-hidden="true">·</span>
+      <button class="link-button" type="button" data-consent-open>Cookie settings</button>
+      {%- endif %}
+    </p>
+  </div>
+</footer>

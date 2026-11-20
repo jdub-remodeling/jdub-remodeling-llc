@@ -1,0 +1,36 @@
+---
+layout: layouts/base.njk
+title: Projects – Before & After
+description: Before-and-after photos of kitchen, bathroom, and home remodeling projects by J-Dub Remodeling LLC.
+---
+{%- set usedCats = gallery | usedCategories(categories) %}
+<section class="page-hero">
+  <div class="container">
+    <p class="eyebrow">Real projects</p>
+    <h1>Before &amp; after</h1>
+    <p class="lede">Photos from completed J-Dub Remodeling projects. Select a photo to see it larger.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    {%- if usedCats.length > 1 %}
+    <div class="filters" role="group" aria-label="Filter projects by type" data-filters>
+      <button type="button" class="filter-btn" aria-pressed="true" data-filter="all">All</button>
+      {%- for category in usedCats %}
+      <button type="button" class="filter-btn" aria-pressed="false" data-filter="{{ category.id }}">{{ category.label }}</button>
+      {%- endfor %}
+    </div>
+    {%- endif %}
+    <p class="visually-hidden" aria-live="polite" data-filter-status></p>
+
+    <div class="project-grid" data-project-grid>
+      {%- asyncEach project in gallery %}
+      {% include "partials/project-card.njk" %}
+      {%- endeach %}
+    </div>
+  </div>
+</section>
+
+{% include "partials/lightbox.njk" %}
+{% include "partials/cta-band.njk" %}

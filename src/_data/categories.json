@@ -1,0 +1,5 @@
+[
+  { "id": "kitchens", "label": "Kitchens" },
+  { "id": "bathrooms", "label": "Bathrooms" },
+  { "id": "other", "label": "Other Remodeling" }
+]

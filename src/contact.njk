@@ -1,0 +1,115 @@
+---
+layout: layouts/base.njk
+title: Contact & Free Quote
+description: Request a free remodeling quote from J-Dub Remodeling LLC. Call or text Justin Robson at 850-614-0729 or send your project details online.
+---
+<section class="page-hero">
+  <div class="container">
+    <p class="eyebrow">Free quote</p>
+    <h1>Tell Justin about your project</h1>
+    <p class="lede">Call or text for the quickest reply, or send the form below with a few details.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container contact-layout">
+    <aside class="contact-methods" aria-labelledby="direct-heading">
+      <h2 id="direct-heading">Reach Justin directly</h2>
+      <ul class="method-list">
+        <li>
+          <a class="method" href="tel:{{ site.contact.phoneE164 }}" data-track="phone">
+            <span class="method-label">Call</span>
+            <span class="method-value">{{ site.contact.phoneDisplay }}</span>
+          </a>
+        </li>
+        <li>
+          <a class="method" href="sms:{{ site.contact.phoneE164 }}" data-track="text">
+            <span class="method-label">Text</span>
+            <span class="method-value">{{ site.contact.phoneDisplay }}</span>
+          </a>
+        </li>
+        <li>
+          <a class="method" href="mailto:{{ site.contact.email }}" data-track="email">
+            <span class="method-label">Email</span>
+            <span class="method-value method-email">{{ site.contact.email }}</span>
+          </a>
+        </li>
+      </ul>
+      {%- if site.serviceArea.length %}
+      <p class="service-area">Serving {{ site.serviceArea | join(", ") }}.</p>
+      {%- endif %}
+    </aside>
+
+    <div class="form-wrap" id="quote">
+      <h2>Request a free quote</h2>
+      <p class="form-intro">Fields marked <span class="req" aria-hidden="true">*</span><span class="visually-hidden">with an asterisk</span> are required. Please include an email address or a phone number so Justin can reply.</p>
+
+      <div class="form-summary" data-form-summary tabindex="-1" hidden>
+        <h3>Please fix the following:</h3>
+        <ul data-form-summary-list></ul>
+      </div>
+
+      <form class="quote-form" name="quote" method="POST" action="/quote-received/"
+            data-netlify="true" netlify-honeypot="bot-field" data-quote-form novalidate>
+        <input type="hidden" name="form-name" value="quote">
+        <p class="hp-field" aria-hidden="true">
+          <label>Leave this field empty <input name="bot-field" tabindex="-1" autocomplete="off"></label>
+        </p>
+
+        <div class="field">
+          <label for="f-name">Name <span class="req" aria-hidden="true">*</span></label>
+          <input id="f-name" name="name" type="text" autocomplete="name" required maxlength="120" aria-describedby="f-name-error">
+          <p class="field-error" id="f-name-error" data-error-for="name"></p>
+        </div>
+
+        <fieldset class="field-group" aria-describedby="contact-hint contact-error">
+          <legend>How should Justin reach you? <span class="req" aria-hidden="true">*</span></legend>
+          <p class="field-hint" id="contact-hint">Give an email address, a phone number, or both.</p>
+          <div class="field-row">
+            <div class="field">
+              <label for="f-email">Email</label>
+              <input id="f-email" name="email" type="email" autocomplete="email" maxlength="200" required aria-describedby="f-email-error">
+              <p class="field-error" id="f-email-error" data-error-for="email"></p>
+            </div>
+            <div class="field">
+              <label for="f-phone">Phone</label>
+              <input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="30" aria-describedby="f-phone-error">
+              <p class="field-error" id="f-phone-error" data-error-for="phone"></p>
+            </div>
+          </div>
+          <p class="field-error" id="contact-error" data-error-for="contact"></p>
+        </fieldset>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="f-type">Project type</label>
+            <select id="f-type" name="project-type">
+              <option value="">Choose one</option>
+              <option>Kitchen remodeling</option>
+              <option>Bathroom remodeling</option>
+              <option>General / other remodeling</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-location">City or ZIP</label>
+            <input id="f-location" name="location" type="text" autocomplete="postal-code" maxlength="80">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="f-details">Project description <span class="req" aria-hidden="true">*</span></label>
+          <textarea id="f-details" name="description" rows="6" required maxlength="3000" aria-describedby="f-details-hint f-details-error"></textarea>
+          <p class="field-hint" id="f-details-hint">What would you like done? Include the room, what you’d like to change, and any timing.</p>
+          <p class="field-error" id="f-details-error" data-error-for="description"></p>
+        </div>
+
+        <p class="form-privacy">Your details go only to Justin for replying about your project. See the <a href="/privacy/">privacy notice</a>.</p>
+
+        <button class="btn btn-primary btn-lg" type="submit" data-submit>Send my request</button>
+
+        <div class="form-status" data-form-status role="status" aria-live="polite" tabindex="-1"></div>
+      </form>
+    </div>
+  </div>
+</section>

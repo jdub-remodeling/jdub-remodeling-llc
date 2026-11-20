@@ -1,0 +1,11 @@
+node_modules/
+_site/
+.cache/
+.netlify/
+.env
+.env.*
+Thumbs.db
+.DS_Store
+
+brand-source/whole business card.jpg
+brand-source/name and number and email.jpg

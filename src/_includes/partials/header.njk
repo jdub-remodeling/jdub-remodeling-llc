@@ -1,0 +1,24 @@
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="{{ site.name }} home">
+      <picture>
+        <source type="image/webp" srcset="/assets/img/logo-360.webp 360w, /assets/img/logo-720.webp 720w" sizes="(min-width: 900px) 260px, 200px">
+        <img src="/assets/img/logo-360.jpg" srcset="/assets/img/logo-360.jpg 360w, /assets/img/logo-720.jpg 720w" sizes="(min-width: 900px) 260px, 200px" width="360" height="91" alt="{{ site.name }}">
+      </picture>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle-bars" aria-hidden="true"></span>
+      <span class="nav-toggle-label">Menu</span>
+    </button>
+
+    <nav id="site-nav" class="site-nav" aria-label="Main">
+      <ul>
+        {%- for item in nav %}
+        <li><a href="{{ item.url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
+        {%- endfor %}
+      </ul>
+      <a class="btn btn-primary header-cta" href="tel:{{ site.contact.phoneE164 }}" data-track="phone">Call {{ site.contact.phoneDisplay }}</a>
+    </nav>
+  </div>
+</header>

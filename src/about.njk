@@ -1,0 +1,48 @@
+---
+layout: layouts/base.njk
+title: About Justin Robson
+description: J-Dub Remodeling LLC is run by Justin Robson. Contact Justin directly about kitchen, bathroom, and general remodeling projects.
+---
+<section class="page-hero">
+  <div class="container">
+    <p class="eyebrow">About</p>
+    <h1>Meet Justin Robson</h1>
+    <p class="lede">J-Dub Remodeling LLC is Justin’s remodeling business. When you call, text, or email, you reach him directly.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container about-grid{% if site.about.portrait %} has-portrait{% endif %}">
+    {%- if site.about.portrait %}
+    <figure class="about-portrait">
+      <img src="/assets/img/{{ site.about.portrait }}" alt="{{ site.about.portraitAlt }}" width="600" height="750" loading="lazy">
+    </figure>
+    {%- endif %}
+    <div class="about-copy">
+      <h2>All aspects of remodeling</h2>
+      {%- if site.about.bio.length %}
+      {%- for paragraph in site.about.bio %}
+      <p>{{ paragraph }}</p>
+      {%- endfor %}
+      {%- else %}
+      <p>J-Dub Remodeling LLC takes on all aspects of remodeling, with a focus on kitchens and bathrooms. Whether you have a clear plan or just know something needs to change, Justin is the person to talk to.</p>
+      <p>The best way to get started is to describe your project. Justin will follow up to talk through the details and your free quote.</p>
+      {%- endif %}
+      <div class="btn-row">
+        <a class="btn btn-primary" href="/contact/#quote">Request a Free Quote</a>
+        <a class="btn btn-secondary" href="tel:{{ site.contact.phoneE164 }}" data-track="phone">Call {{ site.contact.phoneDisplay }}</a>
+      </div>
+    </div>
+    {%- if not site.about.portrait %}
+    <aside class="contact-card" aria-label="Contact {{ site.contact.person }}">
+      <p class="contact-card-name">{{ site.contact.person }}</p>
+      <p>{{ site.name }}</p>
+      <ul class="contact-list">
+        <li><a href="tel:{{ site.contact.phoneE164 }}" data-track="phone">Call {{ site.contact.phoneDisplay }}</a></li>
+        <li><a href="sms:{{ site.contact.phoneE164 }}" data-track="text">Text {{ site.contact.phoneDisplay }}</a></li>
+        <li><a href="mailto:{{ site.contact.email }}" data-track="email">{{ site.contact.email }}</a></li>
+      </ul>
+    </aside>
+    {%- endif %}
+  </div>
+</section>

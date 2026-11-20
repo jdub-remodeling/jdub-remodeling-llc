@@ -1,0 +1,31 @@
+---
+layout: layouts/base.njk
+title: Pay Your Invoice
+description: How to pay a J-Dub Remodeling LLC invoice securely through Square.
+---
+<section class="page-hero">
+  <div class="container">
+    <p class="eyebrow">Invoices</p>
+    <h1>Pay your invoice</h1>
+    <p class="lede">J-Dub Remodeling LLC sends invoices through Square. Payment happens on Square’s secure site, never on this website.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container narrow">
+    <h2>The fastest way to pay</h2>
+    <ol class="steps steps-compact">
+      <li><p>Open the invoice email or text you received from J-Dub Remodeling LLC through Square.</p></li>
+      <li><p>Select the <strong>Pay invoice</strong> link in that message. It opens your specific invoice on Square.</p></li>
+      <li><p>Follow Square’s steps to pay. Square sends your receipt.</p></li>
+    </ol>
+    <p>The link in your invoice is tied to your invoice amount and details, so it’s the best way to make sure your payment is applied correctly.</p>
+
+    <div class="note-card">
+      <h3>Can’t find your invoice?</h3>
+      <p>Call or text Justin at <a href="tel:{{ site.contact.phoneE164 }}" data-track="phone">{{ site.contact.phoneDisplay }}</a> and he can resend it.</p>
+      <p><a class="btn btn-secondary" href="{{ site.squareUrl }}" rel="noopener" target="_blank" data-track="invoice-payment-link">Open Square</a></p>
+    </div>
+    <p class="fine-print">J-Dub Remodeling LLC does not collect or store card or bank details on this website.</p>
+  </div>
+</section>

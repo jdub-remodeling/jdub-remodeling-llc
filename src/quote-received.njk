@@ -1,0 +1,18 @@
+---
+layout: layouts/base.njk
+title: Request Received
+description: Your quote request was sent to J-Dub Remodeling LLC.
+noindex: true
+sitemap: false
+---
+<section class="page-hero">
+  <div class="container">
+    <p class="eyebrow">Thank you</p>
+    <h1>Your request was sent</h1>
+    <p class="lede">Justin will get back to you about your project. If it’s time-sensitive, call or text {{ site.contact.phoneDisplay }}.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="tel:{{ site.contact.phoneE164 }}" data-track="phone">Call Justin</a>
+      <a class="btn btn-outline-light" href="/">Back to home</a>
+    </div>
+  </div>
+</section>

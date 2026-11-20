@@ -1,0 +1,37 @@
+---
+layout: layouts/base.njk
+title: Privacy Notice
+description: How J-Dub Remodeling LLC handles information sent through this website.
+---
+<section class="page-hero page-hero-compact">
+  <div class="container">
+    <h1>Privacy notice</h1>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container narrow prose">
+    <h2>Quote requests</h2>
+    <p>When you send the quote form, the details you enter (your name, contact information, location, and project description) are delivered to {{ site.name }} so Justin can reply to you. The form is processed by our website host, Netlify, which stores submissions for us and filters spam.</p>
+    <p>We use this information only to respond about your project. We don’t sell it or share it for marketing.</p>
+
+    <h2>Calls, texts, and email</h2>
+    <p>Phone, text, and email links open your own phone or email app. Those messages go directly to {{ site.contact.person }}.</p>
+
+    <h2>Analytics and cookies</h2>
+    {%- if site.analyticsId %}
+    <p>With your permission, this site uses Google Analytics to understand how visitors find and use it, such as which pages are viewed and whether contact buttons are used. Google Analytics sets cookies only after you choose “Allow analytics.” We do not send your name, email, phone number, or project details to Google Analytics.</p>
+    <p>You can change your choice at any time: <button class="link-button" type="button" data-consent-open>Cookie settings</button>.</p>
+    {%- else %}
+    <p>This site does not currently use analytics or advertising cookies. If that changes, this notice will be updated and you’ll be asked for permission before analytics cookies are set.</p>
+    {%- endif %}
+
+    {%- if site.paymentsLive %}
+    <h2>Payments</h2>
+    <p>Invoices are sent and paid through Square. Payment details are handled by Square under its own privacy policy. This website does not collect or store card or bank information.</p>
+    {%- endif %}
+
+    <h2>Questions</h2>
+    <p>Contact {{ site.contact.person }} at <a href="mailto:{{ site.contact.email }}">{{ site.contact.email }}</a> or <a href="tel:{{ site.contact.phoneE164 }}">{{ site.contact.phoneDisplay }}</a> with any questions or to ask that your information be deleted.</p>
+  </div>
+</section>
