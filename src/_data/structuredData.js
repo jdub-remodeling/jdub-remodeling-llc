@@ -11,7 +11,7 @@ export default function () {
     email: site.contact.email,
     logo: `${site.url}/assets/img/icon-512.png`,
     image: `${site.url}/assets/img/og-image.jpg`,
-    description: "Kitchen, bathroom, and general home remodeling.",
+    description: "All aspects of home remodeling.",
     founder: { "@type": "Person", name: site.contact.person },
   };
 

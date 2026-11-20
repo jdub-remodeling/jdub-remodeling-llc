@@ -41,7 +41,7 @@ To switch to a business-domain email later, change `contact.email` and push. Not
 
 ## Adding before-and-after projects
 
-The Projects page, its menu link, and the homepage preview stay hidden until at least one complete project exists.
+The Before & After page stays in the top menu. Until a complete project exists, that page explains that photos are posted as jobs finish. The homepage preview appears once at least one complete project exists.
 
 1. Create a folder for the project, for example `src/project-photos/smith-kitchen/`.
 2. Add the two photos, for example `before.jpg` and `after.jpg`. Use real photos of Justin's own work only. Large phone photos are fine; the build resizes and compresses them automatically. Landscape photos work best.

@@ -1,19 +1,25 @@
 ---
 layout: layouts/base.njk
 title: Projects – Before & After
-description: Before-and-after photos of kitchen, bathroom, and home remodeling projects by J-Dub Remodeling LLC.
+description: Before-and-after photos of remodeling projects by J-Dub Remodeling LLC.
 ---
 {%- set usedCats = gallery | usedCategories(categories) %}
 <section class="page-hero">
   <div class="container">
     <p class="eyebrow">Real projects</p>
     <h1>Before &amp; after</h1>
-    <p class="lede">Photos from completed J-Dub Remodeling projects. Select a photo to see it larger.</p>
+    <p class="lede">{% if gallery.length %}Photos from completed J-Dub Remodeling projects. Select a photo to see it larger.{% else %}Finished remodeling projects are shown here, with the room before the work and the same room after.{% endif %}</p>
   </div>
 </section>
 
 <section class="section">
   <div class="container">
+    {%- if not gallery.length %}
+    <div class="empty-work">
+      <h2>Photos are added as each job is finished</h2>
+      <p>Justin posts the before and the after once a project is complete. To talk through work anywhere in your home, call or request a quote.</p>
+    </div>
+    {%- else %}
     {%- if usedCats.length > 1 %}
     <div class="filters" role="group" aria-label="Filter projects by type" data-filters>
       <button type="button" class="filter-btn" aria-pressed="true" data-filter="all">All</button>
@@ -29,8 +35,11 @@ description: Before-and-after photos of kitchen, bathroom, and home remodeling p
       {% include "partials/project-card.njk" %}
       {%- endeach %}
     </div>
+    {%- endif %}
   </div>
 </section>
 
+{%- if gallery.length %}
 {% include "partials/lightbox.njk" %}
+{%- endif %}
 {% include "partials/cta-band.njk" %}
